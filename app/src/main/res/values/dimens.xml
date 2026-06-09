@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="pos_button_min_height">56dp</dimen>
+    <dimen name="pos_spec_option_min_width">80dp</dimen>
+    <dimen name="pos_spec_option_min_height">48dp</dimen>
+    <dimen name="pos_cash_numpad_key_size">72dp</dimen>
+    <dimen name="pos_hot_sale_badge_size">44dp</dimen>
+    <dimen name="pos_payment_button_height">64dp</dimen>
+    <dimen name="pos_stepper_button_size">44dp</dimen>
+    <dimen name="pos_product_card_min_width">160dp</dimen>
+    <dimen name="pos_order_row_min_height">88dp</dimen>
+    <dimen name="pos_product_card_image_height">152dp</dimen>
+</resources>
