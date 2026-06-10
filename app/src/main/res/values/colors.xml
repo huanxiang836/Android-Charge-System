@@ -38,4 +38,5 @@
     <color name="spec_option_unselected">#F7F9FB</color>
     <color name="spec_option_unselected_stroke">#E7ECF0</color>
     <color name="settlement_warning_text">#E05A2D</color>
+    <color name="spec_group_background">#F5F7FA</color>
 </resources>

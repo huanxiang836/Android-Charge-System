@@ -1,5 +1,8 @@
 package com.example.myapplication.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 商品模型。
  */
@@ -14,6 +17,9 @@ public final class Product {
     private final int imageResId;
     private final boolean isHotSale;
     private final int salesCount;
+    private final ProductType productType;
+    private final List<ComboItem> comboItems;
+    private boolean active;
 
     public Product(
             String id,
@@ -26,6 +32,40 @@ public final class Product {
             boolean isHotSale,
             int salesCount
     ) {
+        this(id, categoryId, name, specification, price, swatchColorResId, imageResId, isHotSale, salesCount,
+                ProductType.NORMAL, new ArrayList<>(), true);
+    }
+
+    public Product(
+            String id,
+            String categoryId,
+            String name,
+            String specification,
+            int price,
+            int swatchColorResId,
+            int imageResId,
+            boolean isHotSale,
+            int salesCount,
+            boolean active
+    ) {
+        this(id, categoryId, name, specification, price, swatchColorResId, imageResId, isHotSale, salesCount,
+                ProductType.NORMAL, new ArrayList<>(), active);
+    }
+
+    public Product(
+            String id,
+            String categoryId,
+            String name,
+            String specification,
+            int price,
+            int swatchColorResId,
+            int imageResId,
+            boolean isHotSale,
+            int salesCount,
+            ProductType productType,
+            List<ComboItem> comboItems,
+            boolean active
+    ) {
         this.id = id;
         this.categoryId = categoryId;
         this.name = name;
@@ -35,6 +75,9 @@ public final class Product {
         this.imageResId = imageResId;
         this.isHotSale = isHotSale;
         this.salesCount = salesCount;
+        this.productType = productType;
+        this.comboItems = new ArrayList<>(comboItems);
+        this.active = active;
     }
 
     /**
@@ -116,5 +159,78 @@ public final class Product {
      */
     public int getSalesCount() {
         return salesCount;
+    }
+
+    /**
+     * 返回商品类型。
+     *
+     * @return 商品类型
+     */
+    public ProductType getProductType() {
+        return productType;
+    }
+
+    /**
+     * 返回套餐子项。
+     *
+     * @return 套餐子项
+     */
+    public List<ComboItem> getComboItems() {
+        return new ArrayList<>(comboItems);
+    }
+
+    /**
+     * 返回是否套餐。
+     *
+     * @return true 表示套餐
+     */
+    public boolean isCombo() {
+        return productType == ProductType.COMBO;
+    }
+
+    /**
+     * 返回套餐种类数量。
+     *
+     * @return 套餐种类数量
+     */
+    public int getComboItemCount() {
+        return comboItems.size();
+    }
+
+    /**
+     * 返回套餐摘要。
+     *
+     * @return 套餐摘要
+     */
+    public String getComboSummary() {
+        if (comboItems.isEmpty()) {
+            return "";
+        }
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < comboItems.size(); i++) {
+            if (i > 0) {
+                builder.append("、");
+            }
+            builder.append(comboItems.get(i).toSummaryText());
+        }
+        return builder.toString();
+    }
+
+    /**
+     * 返回是否上架。
+     *
+     * @return true 表示上架
+     */
+    public boolean isActive() {
+        return active;
+    }
+
+    /**
+     * 更新上架状态。
+     *
+     * @param active 新状态
+     */
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

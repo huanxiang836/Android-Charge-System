@@ -70,7 +70,7 @@ public final class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderV
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
         OrderItem item = items.get(position);
         holder.binding.orderProductNameText.setText(item.getProduct().getName());
-        holder.binding.orderProductSpecText.setText(item.getProduct().getSpecification());
+        holder.binding.orderProductSpecText.setText(item.getSpecification());
         holder.binding.orderProductPriceText.setText(CurrencyUtils.format(item.getProduct().getPrice()));
         holder.binding.quantityValueText.setText(String.valueOf(item.getQuantity()));
         holder.binding.increaseQuantityButton.setOnClickListener(view -> onIncreaseListener.onAction(item));

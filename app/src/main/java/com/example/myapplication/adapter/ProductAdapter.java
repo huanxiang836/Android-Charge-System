@@ -105,9 +105,8 @@ public final class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Pr
             holder.binding.hotSaleBadgeText.setVisibility(View.GONE);
         }
 
-        // 快速添加按钮 → 直接加入购物车
+        // 快速添加按钮与卡片点击统一进入规格选择。
         holder.binding.addProductButton.setOnClickListener(view -> onProductAddListener.onProductAdd(product));
-        // 卡片点击 → 打开规格确认弹窗
         holder.binding.getRoot().setOnClickListener(view -> onProductDetailListener.onProductDetail(product));
     }
 
